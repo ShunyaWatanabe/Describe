@@ -5,7 +5,19 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "tsc --noEmit && eslint --ext .ts,.tsx ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "expo": "~36.0.0",
@@ -16,10 +28,24 @@
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@react-native-community/eslint-config": "^0.0.6",
+    "@react-native-community/eslint-plugin": "^1.0.0",
     "@types/react": "~16.9.0",
     "@types/react-native": "~0.60.23",
-    "@babel/core": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
     "babel-preset-expo": "~8.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "husky": "^4.0.1",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "typescript": "~3.6.3"
   },
   "private": true
