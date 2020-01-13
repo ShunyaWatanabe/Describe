@@ -6,6 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "test": "jest",
     "lint": "tsc --noEmit && eslint --ext .ts,.tsx ./"
   },
   "husky": {
@@ -17,6 +18,28 @@
     "*.{ts,tsx}": [
       "eslint --fix",
       "git add"
+    ]
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx",
+      "node"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
     ]
   },
   "dependencies": {
@@ -31,8 +54,10 @@
     "@babel/core": "^7.0.0",
     "@react-native-community/eslint-config": "^0.0.6",
     "@react-native-community/eslint-plugin": "^1.0.0",
+    "@types/jest": "^24.0.25",
     "@types/react": "~16.9.0",
     "@types/react-native": "~0.60.23",
+    "@types/react-test-renderer": "^16.9.1",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "babel-preset-expo": "~8.0.0",
     "eslint": "^6.8.0",
@@ -43,9 +68,11 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^4.0.1",
+    "jest-expo": "^36.0.1",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "react-test-renderer": "^16.12.0",
     "typescript": "~3.6.3"
   },
   "private": true
