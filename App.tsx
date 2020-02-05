@@ -1,19 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { Home, GameMain, GameResult, GameScore, GameDecision } from 'src/pages';
+import store from './src/redux/store';
 
-export default function App() {
+const MainNavigator = createStackNavigator({
+  Home: { screen: Home },
+  GameMain: { screen: GameMain },
+  GameResult: { screen: GameResult },
+  GameScore: { screen: GameScore },
+  GameDecision: { screen: GameDecision },
+});
+
+const Navigation = createAppContainer(MainNavigator);
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-    </View>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

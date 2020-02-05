@@ -7,4 +7,9 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/react',
   ],
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+    },
+  },
 };
