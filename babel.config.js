@@ -10,7 +10,16 @@ module.exports = function(api) {
           alias: {
             src: './src',
           },
-          extensions: ['.js', '.jsx', '.es', '.es6', '.mjs', '.ts', '.tsx'],
+          extensions: [
+            '.js',
+            '.jsx',
+            'json',
+            '.es',
+            '.es6',
+            '.mjs',
+            '.ts',
+            '.tsx',
+          ],
         },
       ],
     ],

@@ -13,12 +13,12 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   h1: {
-    textextAlign: 'center',
+    textAlign: 'center',
     fontSize: font.size7,
     margin: 40,
   },
   h2: {
-    textextAlign: 'center',
+    textAlign: 'center',
     fontSize: font.size5,
     margin: 30,
   },

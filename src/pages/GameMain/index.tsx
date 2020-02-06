@@ -1,20 +1,36 @@
 import React from 'react';
-import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { changeCurrentPhrase } from 'src/redux/actions';
+import { View, StatusBar } from 'react-native';
 import Card from 'src/components/Card';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
 
-export default function Screen(props: Props) {
+function Screen(props: Props) {
   const {
-    navigation: { navigate },
+    // navigation: { navigate },
+    currentPhrase,
   } = props;
-
   return (
     <View style={styles.container}>
-      <Card text="PLATYPUS" onPress={() => navigate('GameDecision', {})} />
+      <StatusBar hidden />
+      <Card
+        text={currentPhrase}
+        onPress={() => props.changeCurrentPhrase('')}
+      />
     </View>
   );
 }
+
+function mapStateToProps(state: any) {
+  return {
+    currentPhrase: state.currentPhrase,
+  };
+}
+
+const mapDispatchToProps = { changeCurrentPhrase };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Screen);
 
 Screen.navigationOptions = {
   // title: 'Main',
