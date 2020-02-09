@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import data from 'src/data/data.json';
+import { phrases } from 'src/data';
 
 import {
   CHANGE_CURRENT_PHRASE,
@@ -8,8 +8,13 @@ import {
 
 const currentPhrase = (state: string = 'start', action: any) => {
   switch (action.type) {
-    case CHANGE_CURRENT_PHRASE:
-      return data.phrases[Math.floor(Math.random() * data.phrases.length)];
+    case CHANGE_CURRENT_PHRASE: {
+      const themes = Object.keys(phrases);
+      const theme = themes[Math.floor(Math.random() * themes.length)];
+      const phrase =
+        phrases[theme][Math.floor(Math.random() * phrases[theme].length)];
+      return phrase;
+    }
     default:
       return state;
   }

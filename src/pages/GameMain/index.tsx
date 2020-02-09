@@ -16,7 +16,7 @@ function Screen(props: Props) {
       <StatusBar hidden />
       <Card
         text={currentPhrase}
-        onPress={() => props.changeCurrentPhrase('')}
+        onPress={() => props.changeCurrentPhrase(currentPhrase)}
       />
     </View>
   );
