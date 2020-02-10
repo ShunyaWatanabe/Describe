@@ -4,6 +4,7 @@ import { phrases } from 'src/data';
 import {
   CHANGE_CURRENT_PHRASE,
   INCREASE_TEAM_POINT,
+  RESET_POINTS,
 } from '../actions/actionTypes';
 
 const currentPhrase = (state: string = 'start', action: any) => {
@@ -27,6 +28,8 @@ const points = (state: number[] = [0, 0], action: any) => {
       ret[action.team] += 1;
       return ret;
     }
+    case RESET_POINTS:
+      return [0, 0];
     default:
       return state;
   }

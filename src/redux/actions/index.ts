@@ -1,15 +1,31 @@
-import { CHANGE_CURRENT_PHRASE, INCREASE_TEAM_POINT } from './actionTypes';
+import {
+  CHANGE_CURRENT_PHRASE,
+  INCREASE_TEAM_POINT,
+  RESET_POINTS,
+} from './actionTypes';
 
-export const changeCurrentPhrase = (currentPhrase: string) => {
+const changeCurrentPhrase = (currentPhrase: string) => {
   return {
     type: CHANGE_CURRENT_PHRASE,
     currentPhrase,
   };
 };
 
-export const increaseTeamPoint = (team: string) => {
+const increaseTeamPoint = (team: number) => {
   return {
     type: INCREASE_TEAM_POINT,
     team,
   };
+};
+
+const resetPoints = () => {
+  return {
+    type: RESET_POINTS,
+  };
+};
+
+export default {
+  changeCurrentPhrase,
+  increaseTeamPoint,
+  resetPoints,
 };

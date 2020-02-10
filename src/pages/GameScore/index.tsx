@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import Button from 'src/components/Button';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
 
-export default function Screen(props: Props) {
+function Screen(props: Props) {
   const {
     navigation: { navigate },
+    points: [point1, point2],
   } = props;
 
   return (
@@ -14,14 +16,14 @@ export default function Screen(props: Props) {
       <View style={styles.row}>
         <View style={styles.container}>
           <Text style={styles.h2}>Team 1</Text>
-          <Text style={[styles.h2, { margin: 0 }]}>3</Text>
+          <Text style={[styles.h2, { margin: 0 }]}>{point1}</Text>
         </View>
         <View style={styles.container}>
           <Text style={styles.h2}>Team 2</Text>
-          <Text style={[styles.h2, { margin: 0 }]}>7</Text>
+          <Text style={[styles.h2, { margin: 0 }]}>{point2}</Text>
         </View>
       </View>
-      <Button text="NEXT ROUND" onPress={() => navigate('GameResult', {})} />
+      <Button text="NEXT ROUND" onPress={() => navigate('GameMain', {})} />
     </View>
   );
 }
@@ -30,3 +32,11 @@ Screen.navigationOptions = {
   // title: 'Main',
   headerShown: false,
 };
+
+function mapStateToProps(state: any) {
+  return {
+    points: state.points,
+  };
+}
+
+export default connect(mapStateToProps)(Screen);
