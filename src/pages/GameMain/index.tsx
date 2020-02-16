@@ -43,7 +43,7 @@ function Screen(props: Props) {
               clearInterval(interval);
               navigate('GameDecision', {});
             }
-          }, 5 * 1000);
+          }, (Math.ceil(Math.random() * 10) + 20) * 1000);
         } catch (error) {
           // An error occurred!
           // console.log(error);

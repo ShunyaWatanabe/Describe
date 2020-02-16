@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerMode="none">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="GameMain" component={GameMain} />
         <Stack.Screen name="GameResult" component={GameResult} />
