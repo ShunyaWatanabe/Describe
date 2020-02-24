@@ -8,6 +8,8 @@ module.exports = {
     '!**/node_modules/**',
     '!**/babel.config.js',
     '!**/jest.setup.js',
+    '!**/jest.config.js',
+    '!**/setupTests.js',
   ],
   coverageThreshold: {
     global: {
@@ -17,6 +19,7 @@ module.exports = {
       statements: 80,
     },
   },
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   // this could solve the error: Jest encountered an unexpected token
   // transformIgnorePatterns: [
   //   "node_modules/(?!(jest-)?react-native|unimodules-permissions-interface|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
