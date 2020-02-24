@@ -1,7 +1,6 @@
 module.exports = {
   preset: 'jest-expo',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx', 'node'],
-  collectCoverage: true,
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
     '!**/coverage/**',
