@@ -13,7 +13,7 @@ const clock = require('assets/sounds/clock.wav');
 Audio.setAudioModeAsync({ playsInSilentModeIOS: true } as any);
 const soundObject = new Audio.Sound();
 
-function Screen(props: Props) {
+export function Screen(props: Props) {
   const {
     navigation: { navigate },
     currentPhrase,
@@ -65,7 +65,7 @@ function Screen(props: Props) {
   );
 }
 
-function mapStateToProps(state: any) {
+export function mapStateToProps(state: any) {
   return {
     currentPhrase: state.currentPhrase,
   };

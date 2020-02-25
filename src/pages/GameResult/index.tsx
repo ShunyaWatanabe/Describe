@@ -6,7 +6,7 @@ import Button from 'src/components/Button';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
 
-function Screen(props: Props) {
+export function Screen(props: Props) {
   const {
     navigation: { navigate },
     points: [point1, point2],
@@ -39,7 +39,7 @@ Screen.navigationOptions = {
   headerShown: false,
 };
 
-function mapStateToProps(state: any) {
+export function mapStateToProps(state: any) {
   return {
     points: state.points,
   };

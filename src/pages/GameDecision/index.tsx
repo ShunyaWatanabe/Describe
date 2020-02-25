@@ -13,7 +13,7 @@ const alarmClock = require('assets/sounds/alarmClock.wav');
 Audio.setAudioModeAsync({ playsInSilentModeIOS: true } as any);
 const soundObject = new Audio.Sound();
 
-function Screen(props: Props) {
+export function Screen(props: Props) {
   const {
     navigation: { navigate },
     increaseTeamPoint,
@@ -65,7 +65,7 @@ Screen.navigationOptions = {
   headerShown: false,
 };
 
-const mapStateToProps = (state: any) => {
+export const mapStateToProps = (state: any) => {
   return {
     currentPhrase: state.currentPhrase,
     points: state.points,

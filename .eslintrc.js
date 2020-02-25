@@ -13,4 +13,7 @@ module.exports = {
       'babel-module': {},
     },
   },
+  rules: {
+    'react/jsx-props-no-spreading': 'off',
+  },
 };
