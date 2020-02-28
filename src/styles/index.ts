@@ -11,13 +11,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 0,
+    paddingHorizontal: 50,
   },
   h1: {
+    fontFamily: font.fontFamily,
     textAlign: 'center',
     fontSize: font.size7,
     margin: 40,
   },
   h2: {
+    fontFamily: font.fontFamily,
     textAlign: 'center',
     fontSize: font.size5,
     margin: 30,

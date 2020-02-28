@@ -30,10 +30,12 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   textBlack: {
+    fontFamily: font.fontFamily,
     fontSize: font.size4,
     color: colors.BLACK,
   },
   textWhite: {
+    fontFamily: font.fontFamily,
     fontSize: font.size4,
     color: colors.WHITE,
   },

@@ -6,7 +6,8 @@ const font = {
   size5: 36,
   size6: 48,
   size7: 64,
-  fontFamily: 'Futura',
+  fontFamily: 'PTSansNarrowBold',
+  fontFamilyThin: 'PTSansNarrow',
 };
 
 export default font;

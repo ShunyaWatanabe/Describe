@@ -12,8 +12,9 @@ interface Props {
 
 const styles = StyleSheet.create({
   card: {
-    height: 230,
-    width: 420,
+    height: 280,
+    width: 480,
+    padding: 20,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -24,7 +25,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: {
+    fontFamily: font.fontFamily,
     fontSize: font.size6,
+    textAlign: 'center',
   },
 });
 
