@@ -15,6 +15,12 @@ export default function Screen(props: Props) {
       <View style={styles.container}>
         <Text style={styles.h1}>Describe</Text>
         <Button text="START" onPress={() => navigate('GameMain', {})} />
+        <Text
+          onPress={() => navigate('Instruction')}
+          style={{ textDecorationLine: 'underline' }}
+        >
+          Instruction
+        </Text>
       </View>
     </View>
   );

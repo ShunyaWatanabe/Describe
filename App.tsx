@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Home, GameMain, GameResult, GameScore, GameDecision } from 'src/pages';
+import {
+  Home,
+  Instruction,
+  GameMain,
+  GameResult,
+  GameScore,
+  GameDecision,
+} from 'src/pages';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Font from 'expo-font';
@@ -24,6 +31,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Instruction" component={Instruction} />
         <Stack.Screen name="GameMain" component={GameMain} />
         <Stack.Screen name="GameResult" component={GameResult} />
         <Stack.Screen name="GameScore" component={GameScore} />

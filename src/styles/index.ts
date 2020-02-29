@@ -30,6 +30,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+  back: {
+    fontFamily: font.fontFamilyThin,
+    textDecorationLine: 'underline',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    margin: 10,
+  },
 });
 
 export default styles;
