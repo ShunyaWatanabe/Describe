@@ -29,7 +29,10 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
+      <Stack.Navigator
+        headerMode="none"
+        screenOptions={{ gestureEnabled: false }}
+      >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Instruction" component={Instruction} />
         <Stack.Screen name="GameMain" component={GameMain} />

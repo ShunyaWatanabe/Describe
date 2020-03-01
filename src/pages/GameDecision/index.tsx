@@ -7,6 +7,7 @@ import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
 import { Audio } from 'expo-av';
 import actions from 'src/redux/actions';
+import withBackHandler from 'src/wrappers/withBackHandler';
 
 const alarmClock = require('assets/sounds/alarm1.wav');
 
@@ -76,4 +77,7 @@ const mapDispatchToProps = {
   increaseTeamPoint: actions.increaseTeamPoint,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Screen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withBackHandler(Screen));

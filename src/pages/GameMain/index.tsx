@@ -7,6 +7,7 @@ import Card from 'src/components/Card';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
 import { Audio } from 'expo-av';
+import withBackHandler from 'src/wrappers/withBackHandler';
 
 const timer1 = require('assets/sounds/timer1.wav');
 const timer2 = require('assets/sounds/timer2.wav');
@@ -80,7 +81,10 @@ const mapDispatchToProps = {
   changeCurrentPhrase: actions.changeCurrentPhrase,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Screen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withBackHandler(Screen));
 
 Screen.navigationOptions = {
   // title: 'Main',

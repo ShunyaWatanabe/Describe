@@ -5,6 +5,7 @@ import { View, Text } from 'react-native';
 import Button from 'src/components/Button';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
+import withBackHandler from 'src/wrappers/withBackHandler';
 
 export function Screen(props: Props) {
   const {
@@ -49,4 +50,7 @@ const mapDispatchToProps = {
   resetPoints: actions.resetPoints,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Screen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withBackHandler(Screen));

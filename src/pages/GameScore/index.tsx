@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import Button from 'src/components/Button';
 import styles from 'src/styles';
 import Props from 'src/interfaces/Props';
+import withBackHandler from 'src/wrappers/withBackHandler';
 
 export function Screen(props: Props) {
   const {
@@ -39,4 +40,4 @@ export function mapStateToProps(state: any) {
   };
 }
 
-export default connect(mapStateToProps)(Screen);
+export default connect(mapStateToProps)(withBackHandler(Screen));
