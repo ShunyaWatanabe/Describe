@@ -3,6 +3,6 @@ export default interface Props {
   changeCurrentPhrase: Function;
   currentPhrase: string;
   increaseTeamPoint: Function;
-  points: Array<Number>;
+  points: Array<number>;
   resetPoints: Function;
 }
