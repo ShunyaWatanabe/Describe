@@ -23,5 +23,14 @@ describe('src/pages/Home', () => {
       wrapper.find('Button').simulate('press');
       expect(props.navigation.navigate).toHaveBeenCalled();
     });
+
+    it('should have a text that navigates to instruction', () => {
+      const wrapper = shallow(<Screen {...props} />);
+      wrapper
+        .find('Text')
+        .at(1)
+        .simulate('press');
+      expect(props.navigation.navigate).toHaveBeenCalled();
+    });
   });
 });

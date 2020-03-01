@@ -17,7 +17,7 @@ import store from './src/redux/store';
 const PTSansNarrowBold = require('./assets/fonts/PTSansNarrow-Bold.ttf');
 const PTSansNarrow = require('./assets/fonts/PTSansNarrow-Regular.ttf');
 
-const fetchFonts = async () => {
+export const fetchFonts = async () => {
   return Font.loadAsync({
     PTSansNarrow,
     PTSansNarrowBold,
@@ -26,7 +26,7 @@ const fetchFonts = async () => {
 
 const Stack = createStackNavigator();
 
-const Navigation = () => {
+export const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
