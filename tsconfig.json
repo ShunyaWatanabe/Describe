@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
@@ -8,5 +9,6 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": ["./"]
 }

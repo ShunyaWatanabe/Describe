@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ['setupTests.js'],
   extends: [
     '@react-native-community',
     'airbnb-typescript',
@@ -7,4 +8,12 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/react',
   ],
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+    },
+  },
+  rules: {
+    'react/jsx-props-no-spreading': 'off',
+  },
 };
