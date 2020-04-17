@@ -10,18 +10,42 @@ import { Audio } from 'expo-av';
 import withBackHandler from 'src/wrappers/withBackHandler';
 
 const timer1 = require('assets/sounds/timer1.wav');
-const timer2 = require('assets/sounds/timer2.wav');
-const timer3 = require('assets/sounds/timer3.wav');
-const timer4 = require('assets/sounds/timer4.wav');
 
-Audio.setAudioModeAsync({ playsInSilentModeIOS: true } as any);
+const playSound = async (source: number) => {
+  try {
+    const { sound: soundObject, status } = await Audio.Sound.createAsync(
+      source,
+      { shouldPlay: true, isLooping: true },
+    );
+    return { soundObject, status };
+  } catch (error) {
+    return { error };
+  }
+};
 
-const makeSoundObject = async (source: number) => {
-  const soundObject = new Audio.Sound();
-  await soundObject.loadAsync(source, {
-    isLooping: true,
-  });
-  return soundObject;
+const setLoop = async (
+  {
+    soundObject,
+    rate,
+    numLoops,
+  }: {
+    soundObject: Audio.Sound;
+    rate: number;
+    numLoops: number;
+  },
+  callback: Function,
+) => {
+  if (numLoops <= 0) {
+    console.log('unload timer');
+    await soundObject.unloadAsync();
+    callback();
+  } else {
+    setTimeout(async () => {
+      const newRate = rate + 0.2;
+      await soundObject.setRateAsync(newRate, true);
+      setLoop({ soundObject, rate: newRate, numLoops: numLoops - 1 }, callback);
+    }, 10 * 1000);
+  }
 };
 
 export function Screen(props: Props) {
@@ -29,31 +53,20 @@ export function Screen(props: Props) {
     navigation: { navigate },
     currentPhrase,
     changeCurrentPhrase,
-    points,
+    // points,
   } = props;
-
-  const source = [timer1, timer2, timer3, timer4].map((timer: any) =>
-    makeSoundObject(timer),
-  );
 
   useFocusEffect(
     React.useCallback(() => {
       changeCurrentPhrase(currentPhrase);
-
-      Promise.all(source).then((sounds: Array<any>) => {
-        let counter = 0;
-        sounds[counter].playAsync();
-        const id = setInterval(() => {
-          sounds[counter].stopAsync();
-          counter += 1;
-          if (counter <= 3) {
-            sounds[counter].playAsync();
-          } else {
-            clearInterval(id);
+      (async () => {
+        const { soundObject, status } = await playSound(timer1);
+        if (status && soundObject && status.isLoaded && status.isPlaying) {
+          setLoop({ soundObject, rate: status.rate, numLoops: 1 }, () => {
             navigate('GameDecision', {});
-          }
-        }, 1000 * (Math.floor(Math.random() * 10) + 20 + points[0] + points[1]));
-      });
+          });
+        }
+      })();
       // might need to return clean up, like useEffect
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
