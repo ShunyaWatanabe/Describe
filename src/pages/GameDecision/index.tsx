@@ -12,7 +12,6 @@ import withBackHandler from 'src/wrappers/withBackHandler';
 const alarmClock = require('assets/sounds/alarm1.wav');
 
 Audio.setAudioModeAsync({ playsInSilentModeIOS: true } as any);
-const soundObject = new Audio.Sound();
 
 export function Screen(props: Props) {
   const {
@@ -20,20 +19,34 @@ export function Screen(props: Props) {
     increaseTeamPoint,
     points: [point1, point2],
   } = props;
-
   useFocusEffect(
     React.useCallback(() => {
+      let soundObject: Audio.Sound;
       (async () => {
         try {
-          await soundObject.loadAsync(alarmClock);
-          await soundObject.playAsync();
+          const { sound } = await Audio.Sound.createAsync(alarmClock, {
+            shouldPlay: true,
+          });
+          soundObject = sound;
+          soundObject.setOnPlaybackStatusUpdate(async playbackStatus => {
+            if (playbackStatus.isLoaded && playbackStatus.didJustFinish) {
+              soundObject.unloadAsync();
+            }
+          });
         } catch (error) {
           // An error occurred!
-          // console.log(error);
+          // console.error(error);
         }
       })();
       return () => {
-        soundObject.stopAsync().then(() => soundObject.unloadAsync());
+        (async () => {
+          if (soundObject) {
+            const status = await soundObject.getStatusAsync();
+            if (status.isLoaded) {
+              soundObject.unloadAsync();
+            }
+          }
+        })();
       };
     }, []),
   );
