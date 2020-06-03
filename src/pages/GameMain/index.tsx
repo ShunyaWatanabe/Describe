@@ -17,7 +17,7 @@ const playSound = async (source: number) => {
       source,
       { shouldPlay: true, isLooping: true },
     );
-    return { soundObject, status };
+    return { soundObject, status, test: 'test' };
   } catch (error) {
     return { error };
   }
