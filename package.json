@@ -9,7 +9,9 @@
     "test": "jest",
     "test:cover": "jest --coverage",
     "test:watch": "jest --watch",
-    "lint": "tsc --noEmit && eslint --ext .ts,.tsx ./"
+    "lint": "tsc --noEmit && eslint --ext .ts,.tsx ./",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -55,6 +57,13 @@
     "@babel/core": "^7.0.0",
     "@react-native-community/eslint-config": "^0.0.6",
     "@react-native-community/eslint-plugin": "^1.0.0",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.23",
+    "@storybook/react-native": "^5.3.23",
+    "@storybook/react-native-server": "^5.3.23",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.0.25",
     "@types/react": "~16.9.0",
@@ -62,6 +71,7 @@
     "@types/react-redux": "^7.1.7",
     "@types/react-test-renderer": "^16.9.1",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "babel-loader": "^8.2.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "~8.0.0",
     "enzyme": "^3.11.0",
